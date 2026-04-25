@@ -28,7 +28,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         maxAge: 30 * 24 * 60 * 60, // 30 days in seconds (this value is also the default)
     },
     pages: {
-        signIn: '/login'
+        signIn: '/login',
+        verifyRequest: '/verify'
     },
     providers: [
         Nodemailer({
@@ -56,7 +57,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
                 token.name = session.name;
 
                 try {
-
+                    console.log({token,user,session,trigger})
                 } catch (error) {
                     console.error("Failed to set user name:", error);
                 }
